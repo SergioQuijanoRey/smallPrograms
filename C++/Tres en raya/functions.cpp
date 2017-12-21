@@ -50,13 +50,12 @@ void juega(vector<vector<int> > & tablero, int jugador){
     }
 }
 
-bool comprobar(const vector<vector<int> > & tablero, int & jugador){
-    int ganador;
+bool comprobar(const vector<vector<int> > & tablero, int & ganador){
     bool fin = false;
 
     //Compruebo filas
     for(int i = 0; i < 3 && !fin; i++){
-        if(tablero[i][0] == tablero[i][1] &&  tablero[i][1] == tablero[i][2]){
+        if(tablero[i][0] == tablero[i][1] &&  tablero[i][1] == tablero[i][2] && tablero[i][0] != 0 ){
             ganador = tablero[i][0];
             fin = true;
         }
@@ -64,7 +63,7 @@ bool comprobar(const vector<vector<int> > & tablero, int & jugador){
 
     //Compruebo columnas
     for(int j = 0; j < 3 && !fin; j++){
-        if(tablero[0][j] == tablero[1][j] && tablero[1][j] == tablero[2][j]){
+        if(tablero[0][j] == tablero[1][j] && tablero[1][j] == tablero[2][j] && tablero[0][j] != 0){
             ganador = tablero[0][j];
             fin = true;
         }
@@ -72,10 +71,10 @@ bool comprobar(const vector<vector<int> > & tablero, int & jugador){
 
     //Compruebo diagonales
     if(!fin){
-        if(tablero[0][0] == tablero[1][1] && tablero[1][1] == tablero[2][2]){
+        if(tablero[0][0] == tablero[1][1] && tablero[1][1] == tablero[2][2] && tablero[0][0] != 0){
             ganador = tablero[0][0];
             fin = true;
-        }else if(tablero[2][0] == tablero[1][1] && tablero[1][1] == tablero[0][2]){
+        }else if(tablero[2][0] == tablero[1][1] && tablero[1][1] == tablero[0][2] && tablero[2][0] != 0){
             ganador = tablero[2][0];
             fin = true;
         }

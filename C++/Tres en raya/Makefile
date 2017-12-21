@@ -15,5 +15,5 @@ clean:
 cleanAll:
 	rm *.o main
 
-exe:
+exe: main
 	./main
