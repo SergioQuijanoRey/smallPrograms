@@ -67,8 +67,9 @@ public:
 	void chooseCell(int x, int y){
 		if(minesboard[y][x] == 1){
 			finished = true;
-		}else{
-			revealCell(x, y);
+		}else if(gameboard[y][x] == -1){
+			//This cell hasn't been revealed yet
+			this->revealCell(x, y); 
 		}
 	}
 
@@ -79,14 +80,15 @@ public:
 			//Surrounded cells are revealed as well
 			for(int i = -1; i <= 1; i++){
 				for(int j = -1; j <= 1; j++){
-					if(i != 0 && j != 0 && x + i >= 0 && x + i < length && y + j >= 0 && y + j < length){
+					if(i != 0 && j != 0 && x + i >= 0 && x + i < length && y + j >= 0 && y + j < length && gameboard[y][x] == -1){
+						gameboard[y][x] = 0;
 						revealCell(x + i, y + j);
 					}
 				}
 			}
 		}else{
-			gameboard[y][x] = nMines;
-		}
+			gameboard[y][x] = nMines; 
+ 		}
 	}
 
 	void putMines(int initialX, int initialY, int nMines){
@@ -114,8 +116,8 @@ private:
 
 //MAIN PROGRAM
 int main(){
-	const int side = 10;
-	const int nMines = 3;
+	const int side = 20;
+	const int nMines = 20;
 
 	int xIn;
 	int yIn;
