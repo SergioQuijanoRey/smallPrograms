@@ -86,7 +86,7 @@ public:
 					}
 				}
 			}
-		}else{
+		}else{jazz magenitsim
 			gameboard[y][x] = nMines; 
  		}
 	}
