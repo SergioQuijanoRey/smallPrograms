@@ -1,3 +1,8 @@
+/*
+Nota para el desarrollo:
+	Puedo generar un nuevo grid que calcule antes todas las minas adyacentes al empezar el juego
+	Necesitaria un grid booleano que solo te diga si una celda esta revelada o no 
+*/
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -86,7 +91,7 @@ public:
 					}
 				}
 			}
-		}else{jazz magenitsim
+		}else{
 			gameboard[y][x] = nMines; 
  		}
 	}
@@ -149,6 +154,9 @@ void clearScreen(){
 }
 
 int random(int min, int max){
+	if(min > max)
+		swap(min, max);
+
 	int value =  min + rand() % (max +1 - min);
     return value;
 }
