@@ -9,8 +9,7 @@ Author:
 Description:
     The program calculates the number Pi using the wide known Basilea's serie
 Version:
-    v1.0
-    7th November 2017
+    v1.0 7th November 2017: first functionally version of the program
 */
 
 long double calculatePi(int limit){
