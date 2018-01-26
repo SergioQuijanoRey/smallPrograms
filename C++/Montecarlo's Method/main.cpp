@@ -1,3 +1,12 @@
+/*
+	Description:
+		Calculates the number PI using the Montecarlo's Method
+	Author:
+		Sergio Quijano Rey
+		sergiquijano@gmail.com
+	Version:
+		v1.0 26th Jaunary 2018, first funtionaly version
+*/
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -5,44 +14,63 @@
 #include<time.h>
 using namespace std;
 
-//Precision of the floating point numbers is stablished
-typedef long double cordinate;
-
 //FUNCTIONS
 void startRandom(){
 	srand(time(NULL));
 }
 
-cordinate randomInt(int min, int max){
-     cordinate value =  min + rand() % (max +1 - min);
-     return value;
+/*
+	Generates a fractionary random number between 0 and 1
+*/
+long double randomOne(){
+	long double num1 = rand();
+	long double num2 = rand();
+	long double result;
+
+	if(num1 < num2){
+		result = num1 / num2;
+	}else{
+		result = num2 / num1;
+	}
+
+	return result;
 }
 
-cordinate calculateDistance(cordinate x1, cordinate y1, cordinate x2, cordinate y2){
-	cordinate dist = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+/*
+	Generates a fractionary random number between 0 and max
+*/
+long double randomDouble(double max){
+	double value = randomOne() * max;
+ 	return value;
+}
+
+long double calculateDistance(long double x1, long double y1, long double x2, long double y2){
+	long double dist = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 	return dist;
 }
 
 //MAIN PROGRAM
 int main(){
-	const cordinate squareSide = 1000.0;
-	const cordinate xCenter = squareSide / 2.0;
-	const cordinate yCenter = squareSide / 2.0;
-	const cordinate radius = squareSide / 2.0;
-	int inside = 0;
-	int repeatNumber;
-	cordinate xIn;
-	cordinate yIn;
-	cordinate distance;
-	cordinate PI;
+	const long double squareSide = 10.0;
+	const long double xCenter = squareSide / 2.0;
+	const long double yCenter = squareSide / 2.0;
+	const long double radius = squareSide / 2.0;
+	long long int inside = 0;
+	long double PI;
+
+	long long int repeatNumber;
+	long double xIn;
+	long double yIn;
+	long double distance;
 
 
 	cout << "Introduce the number of tries: ";
 	cin >> repeatNumber;
 
 	for(int i = 0; i < repeatNumber; i++){
-		xIn = randomInt(0, squareSide);
-		yIn = randomInt(0, squareSide);
+		xIn = randomDouble(squareSide);
+		yIn = randomDouble(squareSide);
+		cout << endl;
 
 
 		distance = calculateDistance(xCenter, yCenter, xIn, yIn);
@@ -50,7 +78,7 @@ int main(){
 			inside++;
 		}
 	}
-
-	PI = 4.0 * ((inside / repeatNumber) / ((squareSide * squareSide) / repeatNumber));
+	
+	PI = (long double)4.0 * (((long double) inside) / ((long double) repeatNumber));
 	cout << "The number PI equals " << PI << endl;
 }
