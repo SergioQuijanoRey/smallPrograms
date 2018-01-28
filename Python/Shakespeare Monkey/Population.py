@@ -6,17 +6,21 @@ class Population:
         self.target = _target
         self.size = _size
         self.finished = False
+        self.generation = 1
 
         self.members = []
         self.candidates = []
 
-        #When a Population is created, a random set of cells is created
+        #When a population is created, all of its cells are randomly generated
         self.startPopulation()
+
+        #We calculate which cell is the best (as members is empty, this cell is random)
+        self.bestCell = self.calculateBestCell()
 
     def startPopulation(self):
         for x in range(0, self.size):
             newCell = Cell(self.target, True)
-            self.candidates.append(newCell)
+            self.members.append(newCell)
 
     def generateCandidates(self):
         self.candidates.clear()
@@ -28,17 +32,26 @@ class Population:
 
     def newGeneration(self):
         self.generateCandidates()
-        self.memebers.clear()
+        self.members.clear()
+
+        topIndex = len(self.candidates) - 1
 
         for x in range(0, self.size):
-            index1 = random.randint(0, self.candidates.size())
-            index2 = random.randint(0, self.candidates.size())
+            index1 = random.randint(0, topIndex)
+            index2 = random.randint(0, topIndex)
 
-            newCell = self.memebers[index1].reproduce(self.candidates[index2])
-            self.memebers.append(newCell)
+            newCell = Cell(self.target, True)
+            newCell.reproduce(self.candidates[index1], self.candidates[index2])
 
-            del self.memebers[index1]
-            del self.memebers[index2]
+            self.members.append(newCell)
+
+            del self.candidates[index1]
+            del self.candidates[index2]
+
+            topIndex = topIndex - 2
+
+
+        generation = generation + 1
 
     def checkFinished(self):
         self.calculateBestCell()
@@ -51,22 +64,20 @@ class Population:
         currentBestCell = self.members[0]
         bestFit = self.members[0].fitness()
 
-        for cell in self.memebers:
+        for cell in self.members:
             fitVal = cell.fitness()
 
             if fitVal > bestFit:
                 bestFit = fitVal
                 currentBestCell = cell
 
-        self.bestCell = currentBestCell
+                self.bestCell = currentBestCell
+
 
     def show(self):
-        self.calculateBestCell()
-
-        print("The best coincidence is:", self.bestCell)
+        print("Generation:", self.generation)
+        print("Population:", self.size)
         print("This are the cells in our population:")
 
-        for cell in self.memebers:
-            dna = cell.DNA
-
-            print("\t", dna)
+        for cell in self.members:
+            print("\t", cell.DNA)

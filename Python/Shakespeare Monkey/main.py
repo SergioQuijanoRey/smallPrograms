@@ -3,9 +3,10 @@ from Population import *
 
 #Problem variables
 target = "Ser o no ser, esa es la cuestion"
-popSize = 200
+popSize = 10
 
 population = Population(target, popSize)
+population.show()
 
 while population.finished == False:
     population.show()

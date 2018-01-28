@@ -20,37 +20,34 @@ class Cell:
 
             self.DNA += newchar
 
-    def reproduce(self, cell2):
-        maxSize = utilities.getMax(self.size, cell2.size)
-        newCell = Cell(self.target)
+    def reproduce(self, cell1, cell2):
+        length = len(self.DNA) - 1
+        copy = self.DNA
+        self.DNA = ""
 
-        for x in range(0, maxSize):
+        for x in range(0, length):
             choice = random.randint(0,1)
 
             if choice == 0:
-                newchar = self.getDNAFragment(x)
+                self.DNA += self.getDNAFragment(x, copy)
             else:
-                newchar = cell2.getDNAFragment(x)
+                self.DNA += cell2.getDNAFragment(x, copy)
 
-            newCell.DNA.append(newChar)
-
-        return newCell
-
-    def getDNAFragment(index):
+    def getDNAFragment(self, index, text):
         election = random.randint(0, 100)
 
         if election < self.mutationrate:    #The DNA mutates
             asciiNum = random.randint(32,127)
             char = chr(asciiNum)
         else:
-            char = self.DNA[index]
+            char = text[index]
 
         return char
 
     def fitness(self):
         fitVal = 0
 
-        for x in self.DNA.size():
+        for x in range(0, len(self.DNA)):
             if self.DNA[x] == self.target[x]:
                 fitVal = fitVal + 1
 
