@@ -1,72 +1,87 @@
 #include "Cell.h"
+#include "Functions.h"
 
-//Constructors
-Cell::Cell(string _target, bool random){
+//Constructor
+Cell::Cell(string _target, bool randomGenerate){
     target = _target;
     size = target.size();
+    DNA = "";
 
-    if(random == false){
-        DNA = "";
-    }else{
-        for(int i = 0; i < size; i++){
-            char charIn = randomInt(32, 126);
-            DNA += charIn;
-        }
+    if(randomGenerate == true){
+        generateRandomDNA();
     }
 }
 
 //Get methods
 string Cell::getDNA() const{
-    return DNA;
+    return this->DNA;
 }
 
-/*int Cell::getFitness() {
-    this->calculateFitness();
-    return fitness;
-}*/
+char Cell::getFragment(int index) const{
+    int election = randomInt(0, 100);
+    char fragment;
+
+    if(election < mutationRate){    //This DNA fragment mutates
+        fragment = randomInt(32, 127);
+    }else{
+        fragment = DNA[index];
+    }
+
+    return fragment;
+}
 
 //Modifiers
 void Cell::calculateFitness(){
-    int fit = 0;
+    int fitVal = 0;
 
     for(int i = 0; i < size; i++){
-        if(DNA[i] == target[i]){
-            fit++;
-        }
+        if(DNA[i] == target[i])
+            fitVal++;
     }
 
-    fitness = fit;
+    fitness = fitVal;
 }
 
-void Cell::addDNA(char newFragment){
-    DNA += newFragment;
+void Cell::generateRandomDNA(){
+    startRandom();
+    char randomChar;
+
+    DNA.clear();
+
+    for(int i = 0; i < size; i++){
+        randomChar = randomInt(32, 127);
+        DNA.push_back(randomChar);
+    }
+}
+
+void Cell::changeDNA(string newDNA){
+    DNA = newDNA;
+}
+
+int Cell::getFitness(){
+    calculateFitness();
+    return fitness;
 }
 
 //Observers
-Cell Cell::reproduce(Cell cell1, Cell cell2){
-    Cell child(cell1.target, false);
+Cell Cell::reproduce(Cell cell2){
+    Cell newCell(target, true);
+    string mixedDNA = "";
     int choice;
-    int mutationChoice;
-    char dnaFragment;
-    string completeDNA;
+    char newChar;
 
-    for(int i = 0; i < cell1.size; i++){
+    for(int i = 0; i < size; i++){
         choice = randomInt(0,1);
-        mutationChoice = randomInt(0, 100);
 
-        if(choice = 0){
-            dnaFragment = cell1.DNA[i];
+        if(choice == 0){
+            newChar = getFragment(i);
         }else{
-            dnaFragment = 'p';
+            newChar = cell2.getFragment(i);
         }
 
-        if(mutationChoice < mutationRate){
-            dnaFragment = randomInt(32, 126);
-        }
-
-        child.addDNA(dnaFragment);
-
+        mixedDNA.push_back(newChar);
     }
 
-    return child;
+    newCell.changeDNA(mixedDNA);
+    return newCell;
 }

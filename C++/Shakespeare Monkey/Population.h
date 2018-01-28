@@ -1,32 +1,34 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include "Cell.h"
+#include "Functions.h"
 using namespace std;
 
 class Population{
 public:
     //Constructors
-    Population(int _size, string _target);
-
-    //Observers
-    void displayInfo() const;
+    Population(string _target, int _size);
 
     //Get methods
     bool getFinished() const;
-    Cell getBestCell() const;
+
+    //Observers
+    void show() const;
 
     //Modifiers
-    void calculateBestCell();
-    void nextGeneration();
+    void nextGen();
     void generateCandidates();
+    void calculateBestCell();
     void checkFinished();
-    
+
 private:
     int size;
     int generation;
-    string target;
     bool finished;
-    vector<Cell> population;
+    string target;
+
+    vector<Cell> members;
     vector<Cell> candidates;
     Cell bestCell;
 

@@ -2,32 +2,26 @@
 #include <vector>
 #include <string>
 #include <cmath>
-#include "Population.h"
+#include <stdlib.h>
+#include <time.h>
+#include "Population.h" //Population object
+#include "Functions.h"  //Some utilities
 using namespace std;
 
-//FUNCTIONS
-
-//MAIN FUNCTION
 int main(){
-    const double mutationRate = 0.05;
-    const int sizeOfPopulation = 200;
-    const string target = "Ser o no ser, esa es la cuestion";
-    const int delayTime = 3000;
+    const string target = "To be or not to be, that's the question";
+    const int popSize = 10;
+    const int delayTime = 1000; //Delay time in miliseconds
 
-    //Random integer generation is started;
-    startRandom();
-
-    //The genetic algorithm starts
-    Population population(sizeOfPopulation, target);
+    Population population(target, popSize);
 
     while(population.getFinished() == false){
         clearScreen();
-        population.displayInfo();
-        population.nextGeneration();
+
+        population.nextGen();
+        population.show();
         population.checkFinished();
 
-        delay(delayTime);
+        delayMili(delayTime);
     }
-
-    cout << "The result is: " << population.getBestCell().getDNA() << endl;
 }
