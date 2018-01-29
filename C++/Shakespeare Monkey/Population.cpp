@@ -1,15 +1,15 @@
 #include "Population.h"
 
 //Constructors
-Population::Population(string _target, int _size){
-    target = _target;
-    size = _size;
+Population::Population(string targetIn, int sizeIn){
+    target = targetIn;
+    size = sizeIn;
     generation = 0;
     finished = false;
 
-    vector<Cell> members;
-    vector<Cell> candidates;
-    bestCell = Cell(target, true);  //The first best cell is ramdon
+    vector<Cell{}> members;
+    vector<Cell{}> candidates;
+    bestCell = Cell{};  //The first best cell is ramdon
 }
 
 //Get methods
@@ -71,6 +71,7 @@ void Population::calculateBestCell(){
 
     bestCell = members[bestIndex];
 }
+
 void Population::checkFinished(){
     calculateBestCell();
 

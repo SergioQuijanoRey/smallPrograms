@@ -1,14 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "Cell.h"
 #include "Functions.h"
+#include "Cell.h"
 using namespace std;
 
 class Population{
 public:
     //Constructors
-    Population(string _target, int _size);
+    Population(string targetIn, int sizeIn);
 
     //Get methods
     bool getFinished() const;
