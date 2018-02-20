@@ -1,4 +1,4 @@
-CFLAGS = "-std=c++14"
+CFLAGS = "-std=c++11"
 #Program compilation
 all: main
 
