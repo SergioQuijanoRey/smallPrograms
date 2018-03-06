@@ -13,6 +13,7 @@ public:
     void putMine(int xCord, int yCord);
     void revealCell(int xCord, int yCord);
     void startNumberBoard();
+    void checkFinished();
 
     //Observers
     int countMines(int xCord, int yCord) const;
@@ -20,6 +21,7 @@ public:
 
     //Get methods
     bool getFinished() const;
+    bool getWin() const;
 
 private:
     static const int arraySize = 500;
@@ -27,6 +29,7 @@ private:
     int height;
     int nMines;
     bool finished;
+    bool win;
     bool minesBoard[arraySize/2][arraySize/2];
     int numbersBoard[arraySize/2][arraySize/2];
 };

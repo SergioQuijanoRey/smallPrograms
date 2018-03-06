@@ -8,15 +8,29 @@ using namespace std;
 int main(){
     int xCord;
     int yCord;
-    int size = 20;
-    int mines = 10;
+    int width;
+    int height;
+    int mines;
 
-    Grid board(size);
+    //Random number generation is started
+    startRandom();
 
+    //Users define some game's parameters
+    cout << "Introduce the width and height of your gameboard: ";
+    cin >> width >> height;
+    cout << "Introduce the number of mines: ";
+    cin >> mines;
+
+    //The board object is created
+    Grid board(width, height);
+
+    //The mines' position are setted
     cout << "Select the starting cell (x,y): ";
     cin >> xCord >> yCord;
     board.startGame(xCord, yCord, mines);
+    board.putMine(xCord, yCord);
 
+    //Game loop
     while(board.getFinished() == false){
         cleanScreen();
         board.show();
@@ -25,5 +39,12 @@ int main(){
         cin >> xCord >> yCord;
 
         board.putMine(xCord, yCord);
+    }
+
+    //Results are shown
+    if(board.getWin() == true){
+        cout << "You won the game" << endl;
+    }else{
+        cout << "You selected a mine, you loose" << endl;
     }
 }

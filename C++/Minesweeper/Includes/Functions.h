@@ -3,7 +3,6 @@
 
 void startRandom();
 void cleanScreen();
-void sleepMili(int miliseconds);
 int randomInt(int min, int max);
 
 #endif
