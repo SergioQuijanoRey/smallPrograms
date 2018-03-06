@@ -81,6 +81,8 @@ void Grid::putMine(int xCord, int yCord){
     }else{
         revealCell(xCord, yCord);
     }
+
+    checkFinished();
 }
 
 void Grid::startNumberBoard(){
