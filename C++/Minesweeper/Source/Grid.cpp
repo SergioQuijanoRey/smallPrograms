@@ -132,16 +132,54 @@ int Grid::countMines(int xCord, int yCord) const{
 }
 
 void Grid::show() const{
+    //Horizontal guide is shown
+    cout << "      ";
+    for(int col = 0; col < width; col++){
+        cout << col << " ";
+    }
+    cout << endl;
+    for(int col = 0; col < width; col++){
+        cout << "===";
+    }
+    cout << endl;
+
+    //Grid is shown
     for(int row = 0; row < height; row++){
+        //Vertical guide is shown
+        cout << row;
+        if(row < 10){
+            cout << "  || ";
+        }else{
+            cout << " || ";
+        }
+
         for(int col = 0; col < width; col++){
             if(numbersBoard[row][col] == -1){
-                cout << ". ";
+                cout << ".";
             }else{
-                cout << numbersBoard[row][col] << " ";
+                cout << numbersBoard[row][col];
+            }
+
+            if(col < 10){
+                cout << " ";
+            }else{
+                cout << "  ";
             }
         }
         cout << endl;
     }
+
+
+    // for(int row = 0; row < height; row++){
+    //     for(int col = 0; col < width; col++){
+    //         if(numbersBoard[row][col] == -1){
+    //             cout << ". ";
+    //         }else{
+    //             cout << numbersBoard[row][col] << " ";
+    //         }
+    //     }
+    //     cout << endl;
+    // }
 }
 
 //Get methods
