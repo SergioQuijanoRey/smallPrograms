@@ -1,5 +1,25 @@
-# Small projects
-I upload small programs that I write and I find interesting to share.
-Most of them are algorithmits already implemented, by here is my version of that implementations (probably worst than existing ones)
+# **Small projects**
 
-*Sorry if you find typos or bad grammar, I am not a native english speaker, hope you understand*
+## Description:
+
+* I upload small programs that I write and I find interesting to share.
+* Here you can find small algorithms (most of them really silly) and some more *sofisticated* projects
+
+## Contents:
+
+* *Sofisticated* programs:
+	* Game of life
+	* Minesweeer
+	* Shakespeare Monkey (WIP)
+* Silly programs:
+	* Tic tac toe
+	* Number pi using series
+	* Montecarlo's Method
+	* Decimal to binary
+
+## More info about me
+
+* [Website](https://sergioquijanorey.github.io)
+* Personal email: sergiquijano@gmail.com
+
+
