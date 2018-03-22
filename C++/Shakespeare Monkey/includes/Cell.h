@@ -1,25 +1,15 @@
 #ifndef _CELL_H_
 #define _CELL_H_
 
-#include <string>
-
 class Cell{
 public:
     //Constructors
     Cell();
-    Cell(std::string _target, int _mutationRate, bool randomize);
-
-    //Observers
-
-    //Modifiers
-    void calculateFitness();
-    void randomDNA();
-    
+    Cell(std::string _target, int _mutationRate, bool newCell);
 private:
-    int size;
-    int mutationRate;
-    int fitness;
-    std::string DNA;
     std::string target;
+    std::string DNA;
+    int mutationRate;
 };
+
 #endif
