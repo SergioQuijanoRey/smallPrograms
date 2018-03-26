@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/Cell.o \
+	${OBJECTDIR}/src/Functions.o \
 	${OBJECTDIR}/src/Population.o \
 	${OBJECTDIR}/src/main.o
 
@@ -68,6 +69,11 @@ ${OBJECTDIR}/src/Cell.o: src/Cell.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iincludes -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Cell.o src/Cell.cpp
+
+${OBJECTDIR}/src/Functions.o: src/Functions.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iincludes -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Functions.o src/Functions.cpp
 
 ${OBJECTDIR}/src/Population.o: src/Population.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>includes/Cell.h</itemPath>
+      <itemPath>includes/Functions.h</itemPath>
       <itemPath>includes/Population.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -15,6 +16,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>src/Cell.cpp</itemPath>
+      <itemPath>src/Functions.cpp</itemPath>
       <itemPath>src/Population.cpp</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
@@ -47,9 +49,13 @@
       </compileType>
       <item path="includes/Cell.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="includes/Functions.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="includes/Population.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Cell.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Functions.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Population.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -78,9 +84,13 @@
       </compileType>
       <item path="includes/Cell.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="includes/Functions.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="includes/Population.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Cell.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Functions.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Population.cpp" ex="false" tool="1" flavor2="0">
       </item>
