@@ -17,8 +17,8 @@ public:
     void change_target(std::string new_target);
     void calculate_fitness();
 
-    //ADITIONAL FUNCTIONALITY
-
+    //OPERATORS' OVERLOAD
+    friend istream& operator<<() const;
 
 private:
     std::string dna;

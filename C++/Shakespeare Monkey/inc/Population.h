@@ -23,7 +23,7 @@ public:
     Cell get_best_cell() const;
 
     //OPERATORS' OVERLOAD
-    friend ostream* operator<<() const;
+    friend ostream& operator<<() const;
 
 private:
     int mutation_rate;
