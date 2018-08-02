@@ -1,3 +1,6 @@
+void_symbol = "."
+cell_symbol = "O"
+
 class Gameboard:
     def __init__(self, rows, cols, starting_points):
         self.rows = rows
@@ -26,19 +29,17 @@ class Gameboard:
         return data    
 
     def create_grid(self):
-        column = ["X" for x in range(0, self.cols)] 
+        column = [void_symbol for x in range(0, self.cols)] 
         for x in range(0, self.rows):
             self.grid.append(column[:])
 
     def put_cells(self, starting_points):
-        """Cells are put, in a list of format [row, col]"""
-
         for cordinates in starting_points:
             row = cordinates[0]
             col = cordinates[1]
             
             if 0 <= row < self.rows and 0 <= col < self.cols:
-                self.grid[row][col] = "O"
+                self.grid[row][col] = cell_symbol
 
     def next_generation(self):
         self.next_grid = self.grid[:]
@@ -47,10 +48,11 @@ class Gameboard:
             for col in range(0, self.cols):
                 alive_cells_around = self.count_alive_cells(row, col)
                 
-                if self.next_grid[row][col] == "X" and alive_cells_around >= 3:
-                    self.grid[row][col] = "O"
-                elif self.next_grid[row][col] == "O" and not (alive_cells_around == 2 or alive_cells_around == 3):
-                    self.grid[row][col] = "X"
+                if self.next_grid[row][col] == void_symbol and alive_cells_around >= 3:
+                    self.grid[row][col] = cell_symbol
+                elif self.next_grid[row][col] == cell_symbol:
+                    if alive_cells_around < 2 or alive_cells_around > 3:
+                        self.grid[row][col] = void_symbol
 
         #Some updates are made
         self.generation = self.generation + 1
@@ -64,12 +66,14 @@ class Gameboard:
                 other_row = row + y
                 other_col = col + x
 
+                print(x)
+                print(y)
+
                 #Check if we reach borders
                 if 0 <= other_row < self.rows and 0 <= other_col < self.cols:
-                    if self.next_grid[other_row][other_col] == "O":
+                    if self.next_grid[other_row][other_col] == cell_symbol:
                         counter += 1
-        
-        if self.next_grid[row][col] == "O":
+        if self.next_grid[row][col] == cell_symbol:
             counter = counter - 1
 
         return counter
@@ -79,7 +83,7 @@ class Gameboard:
 
         for row in range(0, self.rows):
             for col in range(0, self.cols):
-                if self.grid[row][col] == "O":
+                if self.grid[row][col] == cell_symbol:
                     pop = pop + 1
 
         return pop
