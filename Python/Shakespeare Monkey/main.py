@@ -1,16 +1,37 @@
+import os
 from Population import Population
 
 #Some configuration
 target = "To be or not to be"
 size = 200
-mrate = 0.1
-step_by_step = True
+mrate = 0.2
+step_by_step = False
+show_info = False
 
-population = Population("Hola soy sergio", size, mrate)
+population = Population(target, size, mrate)
 population.random_population()
-print(population)
 
-population.get_candidates()
+if show_info:
+    print(population)
+if step_by_step:
+    input("Press ENTER or \"exit\"")
 
-for idx, candidate in enumerate(population.candidates):
-    print("Candidate {}: ".format(idx) + str(candidate))
+usr = ""
+while usr != "exit" and not population.finished:
+    population.next_gen()
+    population.check_finished()
+    
+    if show_info:
+        print(population)
+        os.system("clear")
+
+    if step_by_step:
+        usr = input("Press ENTER or \"exit\"")
+
+#Results are shown
+if population.finished == True:
+    print("We hit the target")
+    print("Correct cell | " + str(population.best_cell))
+    print("Took {} generations".format(population.generation))
+else:
+    print("You exited the simulation")

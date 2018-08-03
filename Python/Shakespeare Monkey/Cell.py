@@ -22,7 +22,7 @@ class Cell:
         """Generates a random dna sequence from scratch"""
         self.dna = ""
         for _ in range(len(self.target)):
-            new_char = random.choice(string.ascii_letters)
+            new_char = random.choice(string.ascii_letters + " ")
             self.dna = self.dna + new_char
 
     def reproduce(self, other_cell, mutation_rate):
@@ -42,7 +42,7 @@ class Cell:
 
         for idx, char in enumerate(self.dna):
             if random.random() < mutation_rate: #Mutation happens
-                child_dna = child_dna + random.choice(string.ascii_letters)
+                child_dna = child_dna + random.choice(string.ascii_letters + " ")
             else:
                 choice = random.randint(0,1)   
                 if choice == 0:
