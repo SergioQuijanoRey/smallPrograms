@@ -26,8 +26,8 @@ class Population:
         data = data + "Mutation rate: {}\n".format(self.mutation_rate)
         data = data + "Best cell | " + str(self.best_cell) + "\n"
         data = data + "Cells:\n============================\n"
-        for idx, cell in enumerate(self.members):
-            data = data + "Cell {}: ".format(idx) + str(cell) + "\n"
+        #for idx, cell in enumerate(self.members):
+        #    data = data + "Cell {}: ".format(idx) + str(cell) + "\n"
 
         return data
 

@@ -2,11 +2,11 @@ import os
 from Population import Population
 
 #Some configuration
-target = "To be or not to be"
+target = "To be or"
 size = 200
 mrate = 0.2
-step_by_step = False
-show_info = False
+step_by_step = True
+show_info = True 
 
 population = Population(target, size, mrate)
 population.random_population()
