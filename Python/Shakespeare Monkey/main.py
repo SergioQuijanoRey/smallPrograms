@@ -1,3 +1,9 @@
+#Author:
+#   Sergio Quijano
+#   sergiquijano@gmail.com
+#Version:
+#   v1.0 3th August 2018 - First version
+
 import os
 from Population import Population
 
