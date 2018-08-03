@@ -9,7 +9,7 @@ The Conway's game of life is a simple set of rules which behave like a celular a
 
 It has been demostrated that this game is a complete turing machine, that means that any logic computation can be made with the game an it set of rules.
 
-More information can be used [here](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+More information can be found [here](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
 ## How to use:
 
