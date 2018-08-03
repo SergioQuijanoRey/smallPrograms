@@ -42,22 +42,20 @@ class Gameboard:
                 self.grid[row][col] = cell_symbol
 
     def next_generation(self):
-        self.next_grid = self.grid[:]
+        self.next_grid = [row[:] for row in self.grid]
+        for row in range(self.rows):
+            for col in range(self.cols):
+                alive_cells = self.count_alive_cells(row, col)
 
-        for row in range(0, self.rows):
-            for col in range(0, self.cols):
-                alive_cells_around = self.count_alive_cells(row, col)
-                
-                if self.next_grid[row][col] == void_symbol and alive_cells_around >= 3:
+                if self.next_grid[row][col] == void_symbol and alive_cells == 3:
                     self.grid[row][col] = cell_symbol
-                elif self.next_grid[row][col] == cell_symbol:
-                    if alive_cells_around < 2 or alive_cells_around > 3:
-                        self.grid[row][col] = void_symbol
-
+                elif self.next_grid[row][col] == cell_symbol and (alive_cells < 2 or alive_cells > 3):
+                    self.grid[row][col] = void_symbol
+        
         #Some updates are made
         self.generation = self.generation + 1
         self.population = self.count_population()
-        
+
     def count_alive_cells(self, row, col):
         counter = 0
 
@@ -65,9 +63,6 @@ class Gameboard:
             for y in [-1, 0, 1]:
                 other_row = row + y
                 other_col = col + x
-
-                print(x)
-                print(y)
 
                 #Check if we reach borders
                 if 0 <= other_row < self.rows and 0 <= other_col < self.cols:
