@@ -8,7 +8,7 @@ using namespace std;
 const int J1 = 1;
 const int J2 = 2;
 
-//Funcion principañ
+//Funcion principal
 int main(){
     bool acabado = false;
     int ganador = -1;
